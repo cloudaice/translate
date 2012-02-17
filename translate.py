@@ -63,13 +63,16 @@ def outdata(text,conn,c):
     en = trans.zh2en(text)
     zh = ' '.join(zh.split())
     en = ' '.join(en.split())
-    date = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())
-    query = "insert into translate values('%s','%s','%s',%d)" %(date,en.lower(),zh.lower(),0)
-    c.execute(query)
-    conn.commit()
-    print "翻译结果:"
-    print "中文：",zh
-    print "英文：",en
+    if zh == en :
+        print "无法翻译..."
+    else:
+        date = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())
+        query = "insert into translate values('%s','%s','%s',%d)" %(date,en.lower(),zh.lower(),0)
+        c.execute(query)
+        conn.commit()
+        print "翻译结果:"
+        print "中文：",zh
+        print "英文：",en
 
 def is_en(text):
     m=re.match('[A-Za-z ]*',text)
