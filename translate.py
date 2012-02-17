@@ -63,7 +63,7 @@ def outdata(text,conn,c):
     en = trans.zh2en(text)
     zh = ' '.join(zh.split())
     en = ' '.join(en.split())
-    if zh == en :
+    if zh.lower() == en.lower():
         print "无法翻译..."
     else:
         date = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())
