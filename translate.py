@@ -8,6 +8,9 @@ import urllib,urllib2
 from sgmllib import SGMLParser
 import re
 import time
+import os
+
+HERE=os.path.dirname(__file__)
   
 class URLLister(SGMLParser):    
     """ 
@@ -57,10 +60,7 @@ class GoogleTranslate(object):
             result += i + " "  
         return result  
 
-def outdata(text,conn,c):
-    print "正在网络翻译..."
-    zh = trans.en2zh(text)
-    en = trans.zh2en(text)
+def outdata(zh,en,conn,c):
     zh = ' '.join(zh.split())
     en = ' '.join(en.split())
     if zh.lower() == en.lower():
@@ -91,7 +91,8 @@ def is_en(text):
 if __name__ == "__main__":  
     trans = GoogleTranslate()  
     while True:    
-        conn=sqlite3.connect('translate.db')
+        db=HERE+'/translate.db'
+        conn=sqlite3.connect(db)
         c=conn.cursor()
         text = raw_input("请输入要翻译的英文(退出输入q)：")    
         text= ' '.join(text.split())
@@ -103,8 +104,12 @@ if __name__ == "__main__":
             query=("select chinese from translate where english ='%s'" %text.lower())
             c.execute(query)
             result = c.fetchall()
-            if not result: 
-                outdata(text,conn,c)
+            if not result:
+                print "正在网络翻译..."
+                zh = trans.en2zh(text)
+                en = trans.zh2en(text)
+                print "已获得结果"
+                outdata(zh,en,conn,c)
             else:
                 query=("update translate set frequency = frequency+1 where english ='%s'" %text.lower())
                 c=conn.cursor()
@@ -122,7 +127,11 @@ if __name__ == "__main__":
             conn.commit()
             result = c.fetchall()
             if not result:
-                outdata(text,conn,c)
+                print "正在网络翻译..."
+                zh = trans.en2zh(text)
+                en = trans.zh2en(text)
+                print "已获得结果"
+                outdata(zh,en,conn,c)
             else:
                 query=("update translate set frequency = frequency+1 where chinese ='%s'" %text)
                 c=conn.cursor()
