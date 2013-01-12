@@ -19,7 +19,8 @@ you just use follow command:
 `python word_into_file.py [filename]`
 
 it can help you put the all words into your file
- 
+
+
 
 终端上的字典
 ============
@@ -42,4 +43,5 @@ it can help you put the all words into your file
 `python word_into_file.py [filename]`
 
 
++ 使用有道API
 **also it has more Imperfects need you contribute to it **

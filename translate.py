@@ -1,9 +1,11 @@
+#!/usr/bin/env python
 #-*-coding:utf-8-*-
+
+#file: translate.py
+#author: cloudaice
 import urllib2 
 import urllib
 import json
-
-
 
 class Youdao(object):
     def __init__(self):
@@ -23,28 +25,29 @@ class Youdao(object):
     
     def get(self):
         try:
-            req = urllib2.Request(url)
+            req = urllib2.Request(self.url)
             res = urllib2.urlopen(req)
+            result = res.read()
         except:
-            pass
-        result = res.read()
+            print '网络错误'
+            result = None
         try:
             result = json.loads(result)
         except:
-            pass
-            
+            result = None
 
-for v in result['basic']['explains']:
-    print v
-for arg in result['web']:
-    print arg['key']
-    for v in  arg['value']:
-        print v
+        return result['basic']['explains'] if 'basic' in result else None
 
-while True:
-    translate = Youdao()
-    query = raw_input("fy>")
-    translate.set(query)
-    result = translate.get()
-    print result
+if __name__ == "__main__":
+    while True:
+        translate = Youdao()
+        query = raw_input("fy>")
+        if query == 'q':
+            exit()
+        translate.set(query)
+        result = translate.get()
+        if not result:
+            continue
+        for v in result:
+            print v
     
