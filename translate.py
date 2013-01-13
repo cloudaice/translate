@@ -27,16 +27,11 @@ class Youdao(object):
         try:
             req = urllib2.Request(self.url)
             res = urllib2.urlopen(req)
-            result = res.read()
+            result = json.loads(res.read())
+            return result['basic']['explains']
         except:
             print '网络错误'
-            result = None
-        try:
-            result = json.loads(result)
-        except:
-            result = None
-
-        return result['basic']['explains'] if 'basic' in result else None
+            return None
 
 if __name__ == "__main__":
     while True:
