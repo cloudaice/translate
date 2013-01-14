@@ -44,4 +44,5 @@ it can help you put the all words into your file
 
 
 + 使用有道API
-**also it has more Imperfects need you contribute to it **
+
+*also it has more Imperfects need you contribute to it*
