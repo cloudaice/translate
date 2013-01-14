@@ -25,6 +25,7 @@ it can help you put the all words into your file
 终端上的字典
 ============
 
+
 这个应用就是把网上的谷歌翻译搬到桌面上了。你可以通过命令
 
 `python translate.py`

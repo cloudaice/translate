@@ -3,9 +3,13 @@
 
 #file: translate.py
 #author: cloudaice
+
 import urllib2 
 import urllib
 import json
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 class Youdao(object):
     def __init__(self):
@@ -33,16 +37,43 @@ class Youdao(object):
             print '网络错误'
             return None
 
+def save_words(words_dict):
+    fd = open('words.db','w+')
+    line = []
+    for word in words_dict:
+        line.append(word)
+        line.append(words_dict[word]['means'])
+        line.append(str(words_dict[word]['times']))
+        fd.write('@'.join(line))
+    fd.close()
+
 if __name__ == "__main__":
+    words_dict = {}
+    fd = open('words.db','r')
+    for line in fd.readlines():
+        line = line.split('@')
+        words_dict[line[0]] = {}
+        words_dict[line[0]]['means'] = line[1]
+        words_dict[line[0]]['times'] = int(line[2])
+
     while True:
         translate = Youdao()
         query = raw_input("fy>")
         if query == 'q':
             exit()
+        if query in words_dict:
+            words_dict[query]['times'] += 1
+            print '\n'.join(words_dict[query]['means'].split('#'))
+            save_words(words_dict)
+            continue
         translate.set(query)
         result = translate.get()
         if not result:
             continue
         for v in result:
             print v
-    
+        result = '#'.join(result)
+        words_dict[query] = {}
+        words_dict[query]['times'] = 1
+        words_dict[query]['means'] = result
+        save_words(words_dict)
