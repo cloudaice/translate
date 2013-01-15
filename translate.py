@@ -38,13 +38,13 @@ class Youdao(object):
             return None
 
 def save_words(words_dict):
-    fd = open('words.db','w+')
-    line = []
+    fd = open('words.db','w')
     for word in words_dict:
+        line = []
         line.append(word)
         line.append(words_dict[word]['means'])
         line.append(str(words_dict[word]['times']))
-        fd.write('@'.join(line))
+        fd.write('@'.join(line) + '\n')                #每个单词之间采用@号分隔
     fd.close()
 
 if __name__ == "__main__":
@@ -72,7 +72,7 @@ if __name__ == "__main__":
             continue
         for v in result:
             print v
-        result = '#'.join(result)
+        result = '#'.join(result)           #释义行与行之间采用#号分隔
         words_dict[query] = {}
         words_dict[query]['times'] = 1
         words_dict[query]['means'] = result
