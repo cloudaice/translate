@@ -1,0 +1,7 @@
+real     1
+good     4
+like     3
+directive     1
+father     1
+you     1
+hello     5
