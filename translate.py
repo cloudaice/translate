@@ -61,6 +61,8 @@ if __name__ == "__main__":
         query = raw_input("fy>")
         if query == 'q':
             exit()
+        if query == '':
+            continue
         if query in words_dict:
             words_dict[query]['times'] += 1
             print '\n'.join(words_dict[query]['means'].split('#'))
