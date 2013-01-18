@@ -39,11 +39,14 @@ class Youdao(object):
 
 def save_words(words_dict):
     fd = open('words.db','w')
-    for word in words_dict:
+    words = [(word, words_dict[word]['means'], words_dict[word]['times'])
+            for word in words_dict]
+    words = sorted(words, key = lambda d:d[2], reverse = True)
+    for word, means, times in words:
         line = []
         line.append(word)
-        line.append(words_dict[word]['means'])
-        line.append(str(words_dict[word]['times']))
+        line.append(means)
+        line.append(str(times))
         fd.write('@'.join(line) + '\n')                #每个单词之间采用@号分隔
     fd.close()
 

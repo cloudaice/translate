@@ -1,17 +1,18 @@
-real@adj. 实际的；真实的；实在的#adv. 真正地；确实地#n. 现实；实数@1
+hello@int. 喂；哈罗#n. 表示问候， 惊奇或唤起注意时的用语@5
 good@adj. 好的；优良的；愉快的；虔诚的#n. 好处；善行；慷慨的行为#adv. 好@4
-intend@vt. 打算；想要；意指#vi. 有打算@1
+retry@vt. [计] 重试；重审#n. 重操作@4
 like@vt. 喜欢；想；愿意#vi. 喜欢；希望#prep. 像；如同#adj. 同样的；相似的#n. 爱好；同样的人或物#adv. 可能#conj. 好像@3
+real@adj. 实际的；真实的；实在的#adv. 真正地；确实地#n. 现实；实数@1
+unified@adj. 统一的；一致标准的#v. 统一；使一致（unify的过去分词）@1
+intend@vt. 打算；想要；意指#vi. 有打算@1
 directive@n. 指示；指令#adj. 指导的；管理的@1
 modula@n. Modula语言（一种模块化语言）@1
 father@n. 父亲，爸爸；神父；祖先；前辈#vt. 发明，创立；当…的父亲@1
-protocol@n. 协议；草案；礼仪#vt. 拟定#vi. 拟定@1
-hello@int. 喂；哈罗#n. 表示问候， 惊奇或唤起注意时的用语@5
-retry@vt. [计] 重试；重审#n. 重操作@2
-pool@n. 联营；撞球；水塘；共同资金#vi. 联营，合伙经营#vt. 合伙经营@1
-eject@vt. 喷射；驱逐，逐出@1
-you@pron. 你；你们@1
- distribution@n. 分布；分配@1
 Blocking@n. 阻塞；封闭；大块#v. 阻塞（block的ing形式）@1
+eject@vt. 喷射；驱逐，逐出@1
+protocol@n. 协议；草案；礼仪#vt. 拟定#vi. 拟定@1
+you@pron. 你；你们@1
 speaks@vi. 说话；演讲；表明；陈述#vt. 讲话；发言；讲演@1
+ distribution@n. 分布；分配@1
+pool@n. 联营；撞球；水塘；共同资金#vi. 联营，合伙经营#vt. 合伙经营@1
 speak@vi. 说话；演讲；表明；陈述#vt. 讲话；发言；讲演@1
